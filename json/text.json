@@ -1,0 +1,14 @@
+{
+  "text": {
+    "scene1": {
+      "location": "Living Room",
+      "dialogue": [
+        {
+          "player": "",
+          "npc": ""
+        }
+      ],
+      "setting" : "You awake face down in a pool of vomit, with a pounding headache and a pain in your side from sleeping on a conch shell all night"
+    }
+  }
+}

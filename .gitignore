@@ -5,6 +5,7 @@
 !.idea/artifacts/
 !.idea/libraries/
 !.idea/modules.xml
+*.iml
 
 # IMPORTANT: Comment out the line below this comment if JDK names configured in
 #   IntelliJ can't be made consistent across team members' machines; otherwise,

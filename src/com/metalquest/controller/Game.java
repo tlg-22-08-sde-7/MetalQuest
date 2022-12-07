@@ -1,6 +1,7 @@
 package com.metalquest.controller;
 
 import com.google.gson.*;
+import com.metalquest.model.Player;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -12,7 +13,7 @@ public class Game {
     public static Scanner scan;
     private String commandEntered;
 
-    public String getUserInput(){
+    public String getUserInput() {
         Scanner userInputScanner = new Scanner(System.in);
         System.out.println("Enter a command: ");
         String input = userInputScanner.nextLine();
@@ -55,22 +56,22 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (wordsMap.containsKey(verb)){
+        if (wordsMap.containsKey(verb)) {
             action.add(verb);
         }
-            for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
-             for (Object synonyms : entry.getValue()){
-                 if(synonyms.equals(verb.toLowerCase(Locale.ROOT))){
-                     action.add(entry.getKey());
-                 }
-             }
+        for (Map.Entry<String, ArrayList> entry : wordsMap.entrySet()) {
+            for (Object synonyms : entry.getValue()) {
+                if (synonyms.equals(verb.toLowerCase(Locale.ROOT))) {
+                    action.add(entry.getKey());
+                }
             }
+        }
 
         action.add(noun);
 
-            System.out.println(action);
-            return action;
-        }
+        System.out.println(action);
+        return action;
+    }
 
 
     private void endGame() {
@@ -143,20 +144,21 @@ public class Game {
     }
 
     public void execute() {
+        Player player = new Player();
         splashScreen();
         objectiveMsg();
         newGameQuestion();
-        while (true) {
-            showCommands("Living Room");
+        while (true) { // condition to breakout of the loop is if the player types in "quit" or "q"
+            showCommands(player.getLocation());
             String input = getUserInput();
             userInputParser(input);
-            break;
+//            break;
         }
 
     }
 
 
-    private void printItems( ) {
+    private void printItems() {
         // print items from json file
         System.out.println("Items in the room: ");
         try {
@@ -174,11 +176,10 @@ public class Game {
             }
         } catch (IOException e) {
             e.printStackTrace();
-    }
-        
+        }
+
     }
 }
-
 
 
 //            execute commands
